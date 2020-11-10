@@ -5,7 +5,6 @@ onready var pos2D = get_node("../Position2D")         #getting position for the 
 onready var playerObject = get_node("../../player")   #getting the player object
 
 signal spawnEndLvl
-signal unlockFriend
 
    #handles movement
    #LAST UPDATED 11/8/2020
@@ -17,7 +16,6 @@ func _on_Button_pressed():
 	   #changing so you just have to be on the same x/y-axis 10/27/2020
 	if horiz == 0 || vert == 0:
 		playerObject.global_position = pos2D.global_position
-	
 
 
    #this method handles spawning the end level
@@ -25,5 +23,4 @@ func _on_Button_pressed():
 func _on_Goal_Node_area_entered(_area):
 	if get_node("../../Level Start Node"):
 		get_node("../../Level Start Node").queue_free()
-	emit_signal("spawnEndLvl")
-	emit_signal("unlockFriend") #This signal is used by key nodes to unlock Friend
+		emit_signal("spawnEndLvl")
